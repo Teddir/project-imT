@@ -1,24 +1,45 @@
 {
   "name": "sira-app",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "publish:dev": "cross-env APP_ENV=dev expo publish --release-channel dev",
+    "start:dev:client": "cross-env APP_ENV=dev expo start --dev-client",
+    "build:dev:client:android": "cross-env APP_ENV=dev eas build --profile development --platform android"
   },
   "dependencies": {
+    "@react-native-community/hooks": "^2.8.1",
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/stack": "5.x",
+    "axios": "^0.25.0",
     "expo": "~44.0.0",
+    "expo-dev-client": "~0.8.3",
+    "expo-file-system": "~13.1.2",
+    "expo-media-library": "~14.0.0",
+    "expo-permissions": "~13.1.0",
     "expo-status-bar": "~1.2.0",
+    "firebase": "^9.6.4",
+    "lottie-react-native": "5.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-gesture-handler": "~2.1.0",
+    "react-native-image-zoom-viewer": "^3.0.1",
+    "react-native-paper": "^4.11.2",
+    "react-native-reanimated": "~2.3.1",
+    "react-native-safe-area-context": "3.3.2",
+    "react-native-screens": "~3.10.1",
+    "react-native-svg": "12.1.1",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "cross-env": "^7.0.3"
   },
   "private": true
 }
