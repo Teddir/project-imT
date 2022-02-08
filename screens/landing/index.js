@@ -190,7 +190,7 @@ export default function Landing() {
     let nextLanding = index + 1
     if (nextLanding === 3) {
       nextLanding = 0
-      navigation.navigate("Login")
+      navigation.navigate("Home")
     } 
     // console.log(nextLanding);
     const offset = nextLanding * width
