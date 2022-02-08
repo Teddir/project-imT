@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Administratorr\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add lottie-react-native
+  C:\Program Files\nodejs\node.exe C:\Users\Administratorr\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-dev-client @0.8.4
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\xampp\php5_6;C:\ProgramData\ComposerSetup\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\OpenJDK\openjdk-8u282-b08\bin;C:\MinGW\bin;C:\Program Files\nodejs\;C:\Users\Administratorr\AppData\Local\Volta\bin;C:\Users\Administratorr\.windows-build-tools\python27\;C:\Users\Administratorr\AppData\Local\Microsoft\WindowsApps;C:\Users\Administratorr\AppData\Roaming\Composer\vendor\bin;C:\Users\Administratorr\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\heroku\bin;C:\Users\Administratorr\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administratorr\AppData\Local\Microsoft\WindowsApps;C:\Users\Administratorr\AppData\Roaming\npm
@@ -14,20 +14,29 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
-      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26)
+  Error: https://registry.yarnpkg.com/@0.8.4: Request "https://registry.yarnpkg.com/@0.8.4" returned a 405
+      at Request.params.callback [as _callback] (C:\Users\Administratorr\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66997:18)
+      at Request.self.callback (C:\Users\Administratorr\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
+      at Request.emit (events.js:210:5)
+      at Request.<anonymous> (C:\Users\Administratorr\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
+      at Request.emit (events.js:210:5)
+      at IncomingMessage.<anonymous> (C:\Users\Administratorr\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
+      at Object.onceWrapper (events.js:299:28)
+      at IncomingMessage.emit (events.js:215:7)
+      at endReadableNT (_stream_readable.js:1183:12)
+      at processTicksAndRejections (internal/process/task_queues.js:80:21)
 
 npm manifest: 
   {
     "name": "sira-app",
     "version": "1.0.0",
-    "main": "node_modules/expo/AppEntry.js",
     "scripts": {
       "start": "expo start",
       "android": "expo start --android",
       "ios": "expo start --ios",
       "web": "expo start --web",
       "eject": "expo eject",
+      "publish:dev": "cross-env APP_ENV=dev expo publish --release-channel dev",
       "start:dev:client": "cross-env APP_ENV=dev expo start --dev-client",
       "build:dev:client:android": "cross-env APP_ENV=dev eas build --profile development --platform android"
     },
@@ -38,22 +47,23 @@ npm manifest:
       "@react-navigation/stack": "5.x",
       "axios": "^0.25.0",
       "expo": "~44.0.0",
-      "expo-dev-client": "~0.8.0",
+      "expo-dev-client": "~0.8.3",
       "expo-file-system": "~13.1.2",
       "expo-media-library": "~14.0.0",
-      "expo-permissions": "^13.1.0",
+      "expo-permissions": "~13.1.0",
       "expo-status-bar": "~1.2.0",
       "firebase": "^9.6.4",
       "react": "17.0.1",
       "react-dom": "17.0.1",
       "react-native": "0.64.3",
+      "react-native-chart-kit": "^6.11.0",
       "react-native-gesture-handler": "~2.1.0",
       "react-native-image-zoom-viewer": "^3.0.1",
       "react-native-paper": "^4.11.2",
       "react-native-reanimated": "~2.3.1",
       "react-native-safe-area-context": "3.3.2",
       "react-native-screens": "~3.10.1",
-      "react-native-svg": "^12.1.1",
+      "react-native-svg": "12.1.1",
       "react-native-web": "0.17.1"
     },
     "devDependencies": {
@@ -3118,40 +3128,40 @@ Lockfile:
       "@expo/config" "^6.0.6"
       uuid "^3.3.2"
   
-  expo-dev-client@~0.8.0:
-    version "0.8.2"
-    resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-0.8.2.tgz#857a6542da713a47c787dedeeb3d492fe3afbe77"
-    integrity sha512-Bjwzr41g715mHMAuEwhwpWIh3PuFWoOQyGQSmjG+UKDBxmUEfukaKgrqyz58q2cSpELR8jlpQwl8oyt48rNiSA==
+  expo-dev-client@~0.8.3:
+    version "0.8.3"
+    resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-0.8.3.tgz#98a7dfc045abbf9758c71f17c6708b7c7790d33f"
+    integrity sha512-Eun+e+OdBPa2YINRBRle2wGnlV5aU7+T6Ipq8NJpqpxrlhBux2BZEF589UT/FYZWCugWAKRacJ9gep19e9lyhw==
     dependencies:
       "@expo/config-plugins" "^4.0.14"
-      expo-dev-launcher "0.10.2"
-      expo-dev-menu "0.9.2"
-      expo-dev-menu-interface "0.5.2"
+      expo-dev-launcher "0.10.3"
+      expo-dev-menu "0.9.3"
+      expo-dev-menu-interface "0.5.3"
       expo-manifests "~0.2.2"
       expo-updates-interface "~0.5.0"
   
-  expo-dev-launcher@0.10.2:
-    version "0.10.2"
-    resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-0.10.2.tgz#d248a9bc2c0a52d8d9f98ae6a29db0f04c0344dd"
-    integrity sha512-652FPco1xGwRI37ZoRmpyHkqlmlD78r3eS40rH0rObMBqeCyvJmxiJRHoFMvm5u55CR6GyRwCvtxbSn1fIQAwA==
+  expo-dev-launcher@0.10.3:
+    version "0.10.3"
+    resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-0.10.3.tgz#d71a4880471b9b101d74355ce2cf12c779a8ee48"
+    integrity sha512-pIYHvOPZC2hDiAAqEy92dimVcjmtjVfsO09QrBc9tB7eNSbE3B/sjEEzqvQsi1F8hbN9MxyPpM+pU93a426Smw==
     dependencies:
       "@expo/config-plugins" "^4.0.14"
-      expo-dev-menu "0.9.2"
+      expo-dev-menu "0.9.3"
       resolve-from "^5.0.0"
       semver "^7.3.5"
   
-  expo-dev-menu-interface@0.5.2:
-    version "0.5.2"
-    resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.5.2.tgz#3a6251cedfaf31331d7e5724bf9d957dd0e30d6c"
-    integrity sha512-YVVaQqm9UcdC1/fE+NGhEEoF8T0OnudYpl95pNTXj8L7f18sJTZK7AmD3UyCD8fKdqvfxU3Y2Na/IUbrug+NMA==
+  expo-dev-menu-interface@0.5.3:
+    version "0.5.3"
+    resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.5.3.tgz#d1a43ef450d6c727780ed3018376046f0a185980"
+    integrity sha512-i1d7vtKILnq7mo6r5jSQ++UxkpP+VX/IkOAKuWGeB/B32pCTFCD32rplymFS3qPQ+vlmb5zKl5yhYSYZSVobhg==
   
-  expo-dev-menu@0.9.2:
-    version "0.9.2"
-    resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-0.9.2.tgz#ef4e11d399da68dbf52188db1926f22cf93a47d2"
-    integrity sha512-27aeuE+iXrdFEt10mI9yba5tJvd+Akkz4U0uahAxiNJiygaAL/HRnrnMbzh08xLq8B4iaGIfSxR8bfXRHGK23Q==
+  expo-dev-menu@0.9.3:
+    version "0.9.3"
+    resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-0.9.3.tgz#d4572d86c28b19f4f807534091122b5077821cba"
+    integrity sha512-ZUCDSO2rAhFOKuCXdwBf09VVkvAqZBhjA36b7YkwfvKxQ4nb6ZbB/JRCdtxLcre5hDJX1ya3YMNPY3R0/WCBbg==
     dependencies:
       "@expo/config-plugins" "^4.0.14"
-      expo-dev-menu-interface "0.5.2"
+      expo-dev-menu-interface "0.5.3"
   
   expo-error-recovery@~3.0.4:
     version "3.0.4"
@@ -3216,10 +3226,10 @@ Lockfile:
       compare-versions "^3.4.0"
       invariant "^2.2.4"
   
-  expo-permissions@^13.1.0:
-    version "13.1.0"
-    resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-13.1.0.tgz#1be8fe01476950d642ea83d383fd8912492434b9"
-    integrity sha512-f3ngERaoeAw8236xyvw4gS89Fxd4fU2soKXQn0JPXwiDGmIXO+lIJNH3psNvAebj4DfmyQtGW4AS1itG83GHaQ==
+  expo-permissions@~13.1.0:
+    version "13.1.1"
+    resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-13.1.1.tgz#67414ea027d0e7db61f1bfa83a98ef6af512b59e"
+    integrity sha512-vo2sDlxDJE+THLhUO7G8kMHYnNJoMvYjurFNRvHjEvZAUvFmRgulejr8HlzCpb820brXNg+QWalZCtyA5oQkqg==
   
   expo-status-bar@~1.2.0:
     version "1.2.0"
@@ -3227,9 +3237,9 @@ Lockfile:
     integrity sha512-pVZZ/kDCXFK79E4dCtRecs3XLC8aiwlciutSd/fFmUPJSQZ1Txia6hlKajPt0GAYft8/YnT0V3URXzWZOBniYQ==
   
   expo-updates-interface@~0.5.0:
-    version "0.5.0"
-    resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.5.0.tgz#30b05b9e190b3e2662d7cc26cd84d305d7ab4217"
-    integrity sha512-3Yhip5LQ6x1nQ/2Xm/uP3Oeann7YkaBwsdUpxbcMtn2Ayucuu9U7r9ltwzBFxC4RWebfhXGJZ5+gx85y0leGXQ==
+    version "0.5.1"
+    resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.5.1.tgz#b390622f60b353bb352def895a32dc800a21a4dc"
+    integrity sha512-RLvC69o1BkhHP6hNaWiIvSiTgXABB9v4HnoietoXKFHlAyxlQCupy6ki164KpZNrOS/PFJ2WWqZOvKfiyDVO+w==
   
   expo@~44.0.0:
     version "44.0.5"
@@ -4311,7 +4321,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
     integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
   
-  lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21:
+  lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21:
     version "4.17.21"
     resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
     integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -5100,6 +5110,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
     integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
   
+  paths-js@^0.4.10:
+    version "0.4.11"
+    resolved "https://registry.yarnpkg.com/paths-js/-/paths-js-0.4.11.tgz#b2a9d5f94ee9949aa8fee945f78a12abff44599e"
+    integrity sha512-3mqcLomDBXOo7Fo+UlaenG6f71bk1ZezPQy2JCmYHy2W2k5VKpP+Jbin9H0bjXynelTbglCqdFhSEkeIkKTYUA==
+  
   picocolors@^1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
@@ -5141,6 +5156,11 @@ Lockfile:
     dependencies:
       base64-js "^1.5.1"
       xmlbuilder "^9.0.7"
+  
+  point-in-polygon@^1.0.1:
+    version "1.1.0"
+    resolved "https://registry.yarnpkg.com/point-in-polygon/-/point-in-polygon-1.1.0.tgz#b0af2616c01bdee341cbf2894df643387ca03357"
+    integrity sha512-3ojrFwjnnw8Q9242TzgXuTD+eKiutbzyslcq1ydfu82Db2y+Ogbmyrkpv0Hgj31qwT3lbS9+QAAO/pIQM35XRw==
   
   posix-character-classes@^0.1.0:
     version "0.1.1"
@@ -5282,6 +5302,15 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
     integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
   
+  react-native-chart-kit@^6.11.0:
+    version "6.11.0"
+    resolved "https://registry.yarnpkg.com/react-native-chart-kit/-/react-native-chart-kit-6.11.0.tgz#513e0944cd8f946e1827facc17fe766ae487d91b"
+    integrity sha512-mRSfW+mcyVSi0UZKFucru5h5TPB6UcWrMi/DphICRpPJWlvIVAv/6VYGFA57NFDLoRVufFjbsRRrms+TOq61jw==
+    dependencies:
+      lodash "^4.17.13"
+      paths-js "^0.4.10"
+      point-in-polygon "^1.0.1"
+  
   react-native-codegen@^0.0.6:
     version "0.0.6"
     resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.6.tgz#b3173faa879cf71bfade8d030f9c4698388f6909"
@@ -5354,7 +5383,7 @@ Lockfile:
       react-freeze "^1.0.0"
       warn-once "^0.1.0"
   
-  react-native-svg@^12.1.1:
+  react-native-svg@12.1.1:
     version "12.1.1"
     resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-12.1.1.tgz#5f292410b8bcc07bbc52b2da7ceb22caf5bcaaee"
     integrity sha512-NIAJ8jCnXGCqGWXkkJ1GTzO4a3Md5at5sagYV8Vh4MXYnL4z5Rh428Wahjhh+LIjx40EE5xM5YtwyJBqOIba2Q==
