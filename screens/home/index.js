@@ -1,5 +1,6 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Button, StyleSheet, View, Text, StatusBar, Image, Dimensions } from "react-native";
+import { Button, StyleSheet, View, Text, StatusBar, Image, Dimensions, TouchableOpacity } from "react-native";
 import {
   LineChart,
   BarChart,
@@ -69,6 +70,7 @@ const dataUser = [
 ]
 
 export default function Index() {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
 
@@ -103,35 +105,37 @@ export default function Index() {
       </View>
 
       {/* charts */}
-      <View style={{justifyContent:"center", alignItems:'center', marginTop:34}}>
-      <LineChart  
-        data={dataCharts}
-        width={Dimensions.get("screen").width / 1.1} // from react-native
-        height={250}
-        yAxisSuffix="k"
-        chartConfig={{
-          backgroundColor: "#3142D2",
-          backgroundGradientFrom: "#2C3348",
-          backgroundGradientTo: "#2C3348",
-          decimalPlaces: 1, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(42, 61, 224, ${opacity})`,
-          labelColor: (opacity = 1.1) => `rgba(164, 162, 162, ${opacity})`,
-          style: {
-            borderRadius: 16,
-          },
-          propsForDots: {
-            r: "6",
-            strokeWidth: "4",
-            stroke: "#C4C4C4",
-          }
-        }}
-        bezier
-        onDataPointClick={(a) => console.log(a)}
-        style={{
-          borderRadius: 4,
-        }}
-      />
-      </View>
+      <TouchableOpacity onPress={() => navigation.navigate("History")}>
+        <View style={{justifyContent:"center", alignItems:'center', marginTop:34}}>
+        <LineChart  
+          data={dataCharts}
+          width={Dimensions.get("screen").width / 1.1} // from react-native
+          height={250}
+          yAxisSuffix="k"
+          chartConfig={{
+            backgroundColor: "#3142D2",
+            backgroundGradientFrom: "#2C3348",
+            backgroundGradientTo: "#2C3348",
+            decimalPlaces: 1, // optional, defaults to 2dp
+            color: (opacity = 1) => `rgba(42, 61, 224, ${opacity})`,
+            labelColor: (opacity = 1.1) => `rgba(164, 162, 162, ${opacity})`,
+            style: {
+              borderRadius: 16,
+            },
+            propsForDots: {
+              r: "6",
+              strokeWidth: "4",
+              stroke: "#C4C4C4",
+            }
+          }}
+          bezier
+          onDataPointClick={(a) => console.log(a)}
+          style={{
+            borderRadius: 4,
+          }}
+        />
+        </View>
+      </TouchableOpacity>
 
       {/* menu */}
       <View style={{
