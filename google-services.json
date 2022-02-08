@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "768259156377",
+    "project_id": "sira-apk",
+    "storage_bucket": "sira-apk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768259156377:android:84976c8cc9992964fd4b08",
+        "android_client_info": {
+          "package_name": "com.sira.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768259156377-p4e70bf06j4mfu902h0t8316264759v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMXRXDcniwEm5q6DPk4yLj_g3pz1og_oU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768259156377-p4e70bf06j4mfu902h0t8316264759v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

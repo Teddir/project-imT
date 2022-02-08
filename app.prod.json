@@ -25,12 +25,16 @@
       "bundleIdentifier": "com.putih.siraapp"
     },
     "android": {
+      "permissions": [ "CAMERA", "ACCESS_FINE_LOCATION", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE" ],
+      "userInterfaceStyle": "light",
+      "package": "com.sira.app",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
+      "useNextNotificationsApi": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "permissions": [ "CAMERA", "ACCESS_FINE_LOCATION", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE" ],
-      "package": "com.putih.siraapp"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
