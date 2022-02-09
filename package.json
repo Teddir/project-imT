@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
+    "push": "git push origin-gh && git push origin-gl",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -12,8 +13,10 @@
     "build:dev:client:android": "cross-env APP_ENV=dev eas build --profile development --platform android"
   },
   "dependencies": {
+    "@expo/vector-icons": "^12.0.0",
     "@react-native-community/hooks": "^2.8.1",
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "5.x",
     "axios": "^0.25.0",
