@@ -3,19 +3,21 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Landing from "./screens/landing";
-import Home from "./screens/home";
-import History from './screens/home/others/history';
+import PrivateNavigator from './screens/Navigator';
 
 const Stack = createStackNavigator();
 
 export default function Navigator() {
+  const user = true
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name='Landing' component={Landing}/>
-        <Stack.Screen name='Home' component={Home}/>
-        <Stack.Screen name='History' component={History}/>
-      </Stack.Navigator>
+      {!user ? 
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name='Landing' component={Landing}/>
+        </Stack.Navigator>
+      :
+        <PrivateNavigator/>     
+      }
     </NavigationContainer>
   );
 }
