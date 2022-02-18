@@ -1,12 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "./home";
-import History from "./home/others/history";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+
+import Home from "./home";
+import History from "./home/others/history";
+import Account from "./home/others/account";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator()
@@ -18,19 +20,6 @@ const colors = {
   fivety: "#8B8B8B",
   sixty: "#C4C4C4",
 };
-
-function Account() {
-  const navigation = useNavigation()
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>ini Account</Text>
-      <Button
-        mode="outline"
-        onPress={() => navigation.navigate("Tagihan")}
-      >Go to Tagihan</Button>
-    </View>
-  );
-}
 
 function Tagihan() {
   return (
