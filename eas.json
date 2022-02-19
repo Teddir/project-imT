@@ -11,6 +11,14 @@
         "APP_ENV": "dev"
       }
     },
+    "dev_prod": {
+      "releaseChannel": "prod",
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "prod"
+      }
+    },
     "preview": {
       "distribution": "internal"
     },
