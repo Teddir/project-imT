@@ -138,7 +138,7 @@ export default function index() {
                     style={{
                       color: colors.fivety,
                       textTransform: "lowercase",
-                      fontSize: 12,
+                      fontSize: 12
                     }}
                   >
                     {data.desc}
