@@ -152,6 +152,7 @@ function Header() {
 }
 
 function Action() {
+  const navigation = useNavigation()
   return (
     <>
       {/* menu */}
@@ -183,7 +184,7 @@ function Action() {
             }}
             source={require("../../assets/vector.png")}
           />
-          <View style={{ margin: 18 }}>
+          <TouchableOpacity style={{ margin: 18 }} onPress={() => navigation.navigate("Pay")}>
             <Text
               style={{
                 color: colors.fourthy,
@@ -198,7 +199,7 @@ function Action() {
             <Text style={{ color: colors.sixty, fontSize: 12 }}>
               Klik untuk menagih
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
         <View
           style={{
