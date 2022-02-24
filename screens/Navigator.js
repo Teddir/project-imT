@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, StatusBar} from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -9,11 +9,13 @@ import { useNavigation } from "@react-navigation/native";
 import Home from "./home";
 import History from "./home/others/history";
 import Account from "./home/others/account";
+import Pay from "./home/others/pay"
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator()
 const colors = {
   primary: "#1B202F",
+  primary_young: "#282F45",
   scondary: "#2AE05D",
   thirdty: "#EE4F4F",
   fourthy: "#FFFFFF",
@@ -99,11 +101,27 @@ function PrivateTabNavigator() {
 
 export default function PrivateNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="PrivateTabNavigator" component={PrivateTabNavigator} options={{headerShown:false}}/>
-      <Stack.Screen name="Tagihan" component={Tagihan} /> 
-      <Stack.Screen name="History" component={History} /> 
-    </Stack.Navigator>
+    <>
+      <StatusBar
+        backgroundColor={colors.primary}
+      />
+      <Stack.Navigator>
+        <Stack.Screen name="PrivateTabNavigator" component={PrivateTabNavigator} options={{headerShown:false}}/>
+        <Stack.Screen name="Tagihan" component={Tagihan} /> 
+        <Stack.Screen name="History" component={History} /> 
+        <Stack.Screen name="Pay" component={Pay} options={{
+          headerShown:false,
+          title:'Tagihan',
+          headerTitleStyle: {
+            color:colors.fourthy
+          },
+          headerStyle: {
+            backgroundColor:colors.primary_young
+          },
+          headerTintColor:colors.fourthy
+        }} /> 
+      </Stack.Navigator>
+    </>
   )
 
 }
