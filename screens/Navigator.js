@@ -9,6 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 import Home from "./home";
 import History from "./home/others/history";
 import Account from "./home/others/account";
+import Team from "./home/others/team"
 import Pay from "./home/others/pay"
 
 const Tab = createBottomTabNavigator();
@@ -110,6 +111,17 @@ export default function PrivateNavigator() {
         <Stack.Screen name="Tagihan" component={Tagihan} /> 
         <Stack.Screen name="History" component={History} /> 
         <Stack.Screen name="Pay" component={Pay} options={{
+          headerTitle:"Buat Pembayaran",
+          headerTitleStyle:{
+            fontSize:18,
+            color:colors.fourthy
+          },
+          headerStyle: {
+            backgroundColor:colors.primary_young
+          },
+          headerTintColor:colors.fourthy
+        }}/> 
+        <Stack.Screen name="Team" component={Team} options={{
           headerShown:false,
           title:'Tagihan',
           headerTitleStyle: {

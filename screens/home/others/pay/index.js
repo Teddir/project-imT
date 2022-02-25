@@ -1,16 +1,18 @@
 import {
-  Animated,
+  KeyboardAvoidingView,
+  StatusBar,
   StyleSheet,
   Text,
   View,
-  StatusBar,
-  Image,
 } from "react-native";
-import React, { useRef } from "react";
-import { IconButton, Searchbar, useTheme } from "react-native-paper";
-import { useCollapsibleHeader } from "react-navigation-collapsible";
-import { useScrollToTop } from "@react-navigation/native";
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Button, IconButton, TextInput } from "react-native-paper";
+
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const colors = {
   primary: "#1B202F",
@@ -22,141 +24,194 @@ const colors = {
   sixty: "#C4C4C4",
 };
 
-export default function index() {
-  let datas = [];
-  for (let index = 0; index < 100; index++) {
-    datas.push(index);
-  }
+const datas = [
+  {
+    id: 1,
+    icon: "cash-plus",
+    placeholder: "Jumlah Tagihan",
+  },
+  {
+    id: 2,
+    icon: "account",
+    placeholder: "Tagih Uang Ke",
+  },
+  {
+    id: 3,
+    icon: "book-open",
+    iconR: "chevron-right",
+    placeholder: "Kategori",
+  },
+  {
+    id: 4,
+    icon: "notebook",
+    placeholder: "Catatan (Opsional)",
+  },
+];
 
-  const { onScroll, containerPaddingTop, scrollIndicatorInsetTop, translateY } = useCollapsibleHeader();
-  const ref = useRef(null);
-  useScrollToTop(ref);
-
+function Tagihan() {
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
-      <Animated.FlatList
-        data={datas}
-        keyExtractor={(a) => `${a}+${a.length}`}
-        renderItem={(item, index) => {
-          return (
-            <View
-              key={index}
-              style={{
-                margin: 16,
-              }}
-            >
-              <Text>{`${item.index} semangat Teddi`}</Text>
-            </View>
-          );
-        }}
-        onScroll={onScroll}
-        contentContainerStyle={{
-          paddingTop: StatusBar.currentHeight * 3,
-        }}
-        // scrollIndicatorInsets={{
-        //   top: scrollIndicatorInsetTop + stickyHeaderHeight,
-        // }}
-        ref={ref}
-      />
-
-      <Animated.View
-        style={{
-          position: "absolute",
-          backgroundColor: colors.primary_young,
-          width: "100%",
-          transform: [{ translateY: translateY }],
-        }}
-      >
-        <Animated.View
+    <View style={styles.container}>
+      <KeyboardAvoidingView style={{flex:1}}>
+        <View
           style={{
-            paddingTop: StatusBar.currentHeight + 6,
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            marginHorizontal: 12,
+            marginHorizontal: 6,
           }}
         >
-          <View
-            style={{
-              marginVertical: 2,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-            >
-            <View
-              style={{
-                justifyContent: "center",
-                width: "10%",
-              }}
-            >
-              <View
-                style={{
-                  height: 38,
-                  width: 38,
-                  borderRadius: 100,
-                  backgroundColor: "pink",
-                }}
-              >
-                <Image
-                  source={require("../../../../assets/icon.png")}
+          {datas.map((item, index) => {
+            return (
+              <View key={index}>
+                <TextInput
+                  left={
+                    <TextInput.Icon name={item.icon} size={24} color="grey" />
+                  }
+                  right={
+                    <TextInput.Icon name={item?.iconR} size={24} color="grey" />
+                  }
+                  placeholder={item.placeholder}
                   style={{
-                    height: 38,
-                    width: 38,
-                    borderRadius: 100,
+                    backgroundColor: "transparent",
                   }}
-                  blurRadius={20}
+                  mode="flat"
+                  theme={{
+                    colors: {
+                      text: colors.primary,
+                      primary: "grey",
+                      placeholder: colors.sixty,
+                    },
+                  }}
                 />
               </View>
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                width: "80%",
-                marginLeft:6
-              }}
-            >
-              <Searchbar
-                placeholder="Search"
-                inputStyle={{
-                  fontSize: 14,
-                }}
-                style={{
-                  height: "70%",
-                }}
-                icon={() => (
-                  <MaterialCommunityIcons
-                    name="magnify"
-                    size={18}
-                    color={"grey"}
-                  />
-                )}
-              />
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                width: "10%",
-                // backgroundColor:'pink'
-                marginLeft:4
-              }}
-            >
-              <IconButton icon={"cart-outline"} color={colors.fourthy} />
-            </View>
+            );
+          })}
+        </View>
+      <View style={{flex:1, marginHorizontal:4}}>
+        <View
+          style={{
+            position: "absolute",
+            bottom: 10,
+            width: "100%",
+            // backgroundColor:'pink',
+            borderWidth:1,
+            borderColor:'grey',
+            borderRadius:6
+          }}
+          >
+          <View style={{
+            justifyContent:"center",
+            alignItems:"center",
+            margin:12
+          }}>
+            <Text style={{
+              fontSize:16,
+              textTransform:'uppercase',
+              letterSpacing:1
+            }}>Kirim Tagihan</Text>
           </View>
-        </Animated.View>
-      </Animated.View>
+        </View>
+      </View>
+      </KeyboardAvoidingView>
+    </View>
+  );
+}
+
+function Bayaran() {
+  return (
+    <View style={styles.container}>
+      <Text>ini Bayaran</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  headline: {
-    textAlign: "center",
-    marginVertical: 4,
+  container: {
+    flex: 1,
+    paddingTop: StatusBar.currentHeight * 2,
   },
 });
+
+function PayChild() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarLabelStyle: "styles.labelStyle",
+        tabBarInactiveTintColor: "grey",
+        tabBarActiveTintColor: "grey",
+        tabBarStyle: {
+          height: 50,
+          position: "absolute",
+          borderTopWidth: 0,
+          top: 0,
+          ...styles.shadow,
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Tagihan"
+        component={Tagihan}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Tagih",
+          tabBarLabelPosition: "beside-icon",
+          tabBarLabelStyle: {
+            fontSize: 18,
+          },
+          tabBarShowLabel: true,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="cash-multiple"
+              type="simple-line-icon"
+              size={24}
+              iconStyle={{ paddingBottom: 0, paddingTop: 0 }}
+              color={color}
+            />
+          ),
+          tabBarActiveBackgroundColor: "rgba(0, 0, 0, 0.19)",
+          tabBarActiveTintColor: colors.primary,
+          tabBarInactiveTintColor: "rgba(0, 0, 0, 0.19)",
+        }}
+      />
+      <Tab.Screen
+        name="Bayaran"
+        component={Bayaran}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Bayar",
+          tabBarLabelPosition: "beside-icon",
+          tabBarLabelStyle: {
+            fontSize: 18,
+          },
+          tabBarShowLabel: true,
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="cash-register"
+              type="simple-line-icon"
+              size={24}
+              iconStyle={{ paddingBottom: 0, paddingTop: 0 }}
+              color={color}
+            />
+          ),
+          tabBarActiveBackgroundColor: "rgba(0, 0, 0, 0.19)",
+          tabBarActiveTintColor: colors.primary,
+          tabBarInactiveTintColor: "rgba(0, 0, 0, 0.19)",
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default function index() {
+  return (
+    <>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="PayChild"
+          component={PayChild}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Navigator>
+    </>
+  );
+}
