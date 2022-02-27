@@ -25,7 +25,7 @@ const colors = {
 export default function index() {
   let datas = [];
   for (let index = 0; index < 100; index++) {
-    datas.push(index)
+    datas.push(index);
   }
 
   const { onScroll, containerPaddingTop, scrollIndicatorInsetTop, translateY } = useCollapsibleHeader();
