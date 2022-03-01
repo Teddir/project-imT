@@ -4,12 +4,14 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity
 } from "react-native";
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Button, IconButton, TextInput } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,16 +26,44 @@ const colors = {
   sixty: "#C4C4C4",
 };
 
-const datas = [
+const dataClaims = [
   {
     id: 1,
     icon: "cash-plus",
     placeholder: "Jumlah Tagihan",
+    name:'money'
   },
   {
     id: 2,
     icon: "account",
     placeholder: "Tagih Uang Ke",
+    name:'claim'
+  },
+  {
+    id: 3,
+    icon: "book-open",
+    iconR: "chevron-right",
+    placeholder: "Kategori",
+    name:'category'
+  },
+  {
+    id: 4,
+    icon: "notebook",
+    placeholder: "Catatan (Opsional)",
+    name:'noted'
+  },
+];
+
+const dataPays = [
+  {
+    id: 1,
+    icon: "cash-plus",
+    placeholder: "Jumlah Uang",
+  },
+  {
+    id: 2,
+    icon: "account",
+    placeholder: "Berikan Uang Ke",
   },
   {
     id: 3,
@@ -49,6 +79,24 @@ const datas = [
 ];
 
 function Tagihan() {
+  const [FixMoney, setFixMoney] = React.useState('')
+  const [form, setForm] = React.useState({})
+  const [error, setError] = React.useState({})
+
+  const handleChange = (datas, status) => {
+    setForm((data) => ({...data, [status]: datas}))
+    setError((data) => ({...data, [status]: ""}))
+  }
+
+  const saveForm = async () => {
+    try {
+      const jsonValue = JSON.stringify(form)
+      const kamu = await AsyncStorage.setItem('data_claim', jsonValue)
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView style={{flex:1}}>
@@ -57,7 +105,79 @@ function Tagihan() {
             marginHorizontal: 6,
           }}
         >
-          {datas.map((item, index) => {
+          {dataClaims.map((item, index) => {
+            return (
+              <View key={index}>
+                <TextInput
+                  left={
+                    <TextInput.Icon name={item.icon} size={24} color="grey" />
+                  }
+                  right={
+                    <TextInput.Icon name={item?.iconR} size={24} color="grey" />
+                  }
+                  placeholder={item.placeholder}
+                  onChangeText={(a) => handleChange(a, item.name)}
+                  style={{
+                    backgroundColor: "transparent",
+                  }}
+                  keyboardType={item.name === "money" ? "numeric" : null}
+                  mode="flat"
+                  theme={{
+                    colors: {
+                      text: colors.primary,
+                      primary: "grey",
+                      placeholder: colors.sixty,
+                    },
+                  }}
+                />
+              </View>
+            );
+          })}
+        </View>
+      <TouchableOpacity 
+        onPress={saveForm}
+        style={{flex:1, marginHorizontal:4}}
+      >
+        <View
+          style={{
+            position: "absolute",
+            bottom: 10,
+            width: "100%",
+            backgroundColor:colors.primary_young,
+            borderWidth:1,
+            borderColor:'grey',
+            borderRadius:6
+          }}
+          >
+          <View style={{
+            justifyContent:"center",
+            alignItems:"center",
+            margin:12
+          }}>
+            <Text style={{
+              fontSize:16,
+              textTransform:'uppercase',
+              letterSpacing:1,
+              color:colors.fourthy
+            }}>Kirim Tagihan</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+      </KeyboardAvoidingView>
+    </View>
+  );
+}
+
+function Bayaran() {
+  return (
+    <View style={styles.container}>
+      <KeyboardAvoidingView style={{flex:1}}>
+        <View
+          style={{
+            marginHorizontal: 6,
+          }}
+        >
+          {dataPays.map((item, index) => {
             return (
               <View key={index}>
                 <TextInput
@@ -90,7 +210,7 @@ function Tagihan() {
             position: "absolute",
             bottom: 10,
             width: "100%",
-            // backgroundColor:'pink',
+            backgroundColor:colors.primary_young,
             borderWidth:1,
             borderColor:'grey',
             borderRadius:6
@@ -104,20 +224,13 @@ function Tagihan() {
             <Text style={{
               fontSize:16,
               textTransform:'uppercase',
-              letterSpacing:1
-            }}>Kirim Tagihan</Text>
+              letterSpacing:1,
+              color:colors.fourthy
+            }}>Bayar</Text>
           </View>
         </View>
       </View>
       </KeyboardAvoidingView>
-    </View>
-  );
-}
-
-function Bayaran() {
-  return (
-    <View style={styles.container}>
-      <Text>ini Bayaran</Text>
     </View>
   );
 }

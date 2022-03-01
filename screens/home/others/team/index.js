@@ -11,6 +11,7 @@ import { IconButton, Searchbar, useTheme } from "react-native-paper";
 import { useCollapsibleHeader } from "react-navigation-collapsible";
 import { useScrollToTop } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const colors = {
   primary: "#1B202F",
@@ -23,6 +24,7 @@ const colors = {
 };
 
 export default function index() {
+  const [claim, setClaim] = React.useState({})
   let datas = [];
   for (let index = 0; index < 100; index++) {
     datas.push(index);
@@ -31,6 +33,19 @@ export default function index() {
   const { onScroll, containerPaddingTop, scrollIndicatorInsetTop, translateY } = useCollapsibleHeader();
   const ref = useRef(null);
   useScrollToTop(ref);
+
+  
+  React.useEffect(async() => {
+    try {
+      const dia = await AsyncStorage.getItem('data_claim')
+      if (dia == null) {
+        setClaim(dia)
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  },[])
+  console.log(claim);
 
   return (
     <View
