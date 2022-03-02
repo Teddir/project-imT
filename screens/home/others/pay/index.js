@@ -91,7 +91,7 @@ function Tagihan() {
   const saveForm = async () => {
     try {
       const jsonValue = JSON.stringify(form)
-      const kamu = await AsyncStorage.setItem('data_claim', jsonValue)
+      const kamu = await AsyncStorage.setItem('data_claims', jsonValue)
     } catch (error) {
       console.log(error.message);
     }
