@@ -39,9 +39,17 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "extra": {
+      "firebase": {
+        "region": "us-central1"
+      }
+    },
     "plugins":
       [
-        "expo-media-library"
+        "expo-media-library",
+        "@react-native-firebase/app",
+        "@react-native-firebase/perf",
+        "@react-native-firebase/crashlytics"  
       ]
   }
 }
