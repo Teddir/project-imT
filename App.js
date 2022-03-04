@@ -1,7 +1,8 @@
-import { View, Text, StatusBar } from 'react-native';
+import { View, Text, StatusBar, LogBox } from 'react-native';
 import React from 'react';
 import Navigator from './Navigator';
 
+LogBox.ignoreAllLogs('registerError')
 const App = () => {
   return (
     <>
