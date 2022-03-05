@@ -1,0 +1,76 @@
+🥺 hello perkenalkan aku sira yang dibuat dengan sangat tulus oleh siapa ya?. hemm aku lupa tapi dia adalah dia. hhe😉
+my ap : "SIRA APP"
+
+##noted 
+* collection
+** document
+*** field
+
+~ struktur data firebase
+
+* user
+** id -> default
+*** email / phone
+    nama
+    kelas
+    jabatan
+
+
+* admin
+** id -> default
+*** user
+    password
+
+* tagih_bayar
+** id -> default
+*** jumlah_uang
+    user 
+    status
+    pemasukan
+
+* history
+** id -> default
+*** judul
+    penangung_jawab
+    keterangan
+    qty
+    pengeluaran
+
+* dompet
+** id -> admin
+*** total_uang
+    keterangan
+
+
+~ struktur form / input
+
+login : 
+email / phone
+password
+
+register :
+admin
+password
+
+tagihan / bayaran :
+jumlah_uang
+user 
+status
+pemasukan
+
+history :
+judul
+penangung_jawab -> user
+keterangan
+qty
+pengeluaran
+
+anggota : 
+user
+
+setting akun :
+user -> without phone
+
+setting phone : 
+phone -> user
+
